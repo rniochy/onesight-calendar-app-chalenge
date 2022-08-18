@@ -1,15 +1,21 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import { AppContext } from '../../pages/_app';
 import styles from "../../styles/appointment.module.scss";
 
-const Appointment = ({dateOfEvent}) => {
+const Appointment = ({eventDate}) => {
+    const {setAppoimentFile} = useContext(AppContext);
+    const saveEventHandler = (e) => {
+         e.preventDefault();
+         setAppoimentFile(false);    
+    }
     return (
         <div className={styles.appointment_container}>
-             <form>
+             <form onClick={saveEventHandler}>
                 <legend>Create new appointment</legend>
-                <h3>{"18-8-2022"}</h3>
+                <h3>{eventDate}</h3>
                 <input type="text" placeholder='Name'/>
                 <div className={styles.note_area}>
-                    <label for="area" >Notes</label>
+                    <label htmlFor="area" >Notes</label>
                     <textarea id='area'></textarea>
                 </div>
                 <input type="submit" value="Save"/>

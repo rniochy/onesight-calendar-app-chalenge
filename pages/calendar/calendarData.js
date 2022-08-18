@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import styles from '../../styles/calendardata.module.scss' 
+import { useContext } from "react";
+import { AppContext } from "../_app";
+import styles from '../../styles/calendardata.module.scss'; 
 
 function CalendarData() {
+    const {setAppoimentFile, setEventDate} = useContext(AppContext);
     const [dayList, setDayList] = useState();
     const [monthName, setmonthName] = useState();
     const [yearName, setYearName] = useState();
@@ -18,8 +21,9 @@ function CalendarData() {
         calendar();
     }, [])
 
-    const handlerClickEvent = () =>{
-         alert();
+    const handlerClickEvent = (e) =>{
+        setEventDate(e.currentTarget.getAttribute('value') + " " + month + " "+ year)
+        setAppoimentFile(true);
     }
 
     const calendar = () => {
