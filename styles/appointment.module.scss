@@ -1,0 +1,39 @@
+$display: flex;
+$flexDirection: column;
+
+.appointment_container {
+    display: $display;
+    flex-direction: $flexDirection;
+    form {
+        border: 1px solid  #9a9a9a;
+        border-radius: 5px;
+        display: $display;
+        flex-direction: $flexDirection;
+        row-gap: 0.2rem;
+
+        input, textarea {
+             border: 1px solid  #9a9a9a;
+             border-radius: 3px;
+             align-self: center;
+        }
+        label, h3 {
+             margin-left: 0.4rem;
+        }
+        h3 {
+             color: rgb(00, 154, 154);
+
+        }
+        input {
+             width: 97%;
+        }
+        textarea {
+             resize: none;
+             width: 97%;
+        }
+    }
+    .note_area{
+        display: $display;
+        flex-direction: $flexDirection;
+    }
+
+}
