@@ -6,7 +6,7 @@ export const AppContext = createContext(null)
 
 function MyApp({ Component, pageProps }) {
     const [appoimentFile, setAppoimentFile] = useState(false);
-    const [eventDate, setEventDate] = useState("");
+    const [eventDate, setEventDate] = useState({day:"", month:"", year:""});
     return(
         <>
             <AppContext.Provider value={{appoimentFile, setAppoimentFile, eventDate, setEventDate}}>

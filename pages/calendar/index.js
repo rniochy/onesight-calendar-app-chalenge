@@ -16,6 +16,9 @@ return (
                         <Appointment eventDate={eventDate}/>
                     </div>
             </div>
+            <aside>
+                 <p>Rodrigo</p>
+            </aside>
         </div>
     </>
     );    

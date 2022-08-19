@@ -22,7 +22,7 @@ function CalendarData() {
     }, [])
 
     const handlerClickEvent = (e) =>{
-        setEventDate(e.currentTarget.getAttribute('value') + " " + month + " "+ year)
+        setEventDate({day:e.currentTarget.getAttribute('value'),month:month,year:year})
         setAppoimentFile(true);
     }
 
@@ -59,6 +59,7 @@ function CalendarData() {
     }
     return (
        <section className={styles.calendarData}>
+            <p style={{textAlign: "center"}}>{`${monthName +' '+ yearName}`} </p>
             <ul className={styles.weekdays}>
                 <li>Mo</li>
                 <li>Tu</li>

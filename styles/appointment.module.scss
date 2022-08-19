@@ -31,10 +31,20 @@ $flexDirection: column;
                 resize: none;
                 width: 97%;
             }
+            input[type='submit'] {
+                 margin-bottom: 0.5rem;
+                 padding: 0.1rem;
+                 width: 49%;
+            }
         }
     .note_area{
         display: $display;
         flex-direction: $flexDirection;
+    }
+    .buttons {
+         display: flex;
+         margin-left: 0.4rem;
+         column-gap: 0.5%;
     }
 
 }

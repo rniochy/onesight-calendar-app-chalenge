@@ -3,6 +3,8 @@ import styles from "../styles/index.module.scss";
 
 export default function Home(){
   return (
-        <Calendar/>
+         <div className={styles.home_container}>
+              <Calendar/>
+         </div>
   );
  } 

@@ -8,6 +8,7 @@ $color: rgb(00, 154, 154);
      border: 1px solid  $border-color;
      padding: 12px;
      border-radius: $border-radius;  
+     grid-template-columns: 1fr 1fr
 }
 .weekdays {
      display: grid;

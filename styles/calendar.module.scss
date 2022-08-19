@@ -1,11 +1,10 @@
 .container {
-     height: 100vh;
+     height: 90vh;
      display: flex;
-     flex-direction: column;
-    align-items: center;
+     flex-direction: row;
 }
 
 .appoiment_field_hide {
      visibility: hidden;
-     transition: 500ms ease-in-out;
+     transition: 300ms ease-in-out;
 }
