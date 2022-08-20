@@ -11,9 +11,8 @@ const CreateAppointment = ({eventDate}) => {
 
      async function saveEventHandler (e)  {
          e.preventDefault();
-        //  setAppoimentFile(false); 
-        const appointment = {name: "Rodrigo", note: "Ir a escola"} 
-        const res = await fetchData.post('/api/appointment/send',  {name, note});
+         setAppoimentFile(false); 
+        const res = await fetchData.put('/api/appointment/appointment',  {name, note});
         alert(res.data.name)
     }
     const RemoveEventHandler = (e) => { 
