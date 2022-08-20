@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { AppContext } from "../_app";
 import CalendarData from "./calendarData";
 import styles from '../../styles/calendar.module.scss'
-import Appointment from "../../components/createappointment";
+import CreateAppointment from "../../components/createappointment";
 
 const  Calendar =  () => {
     const {appoimentFile, eventDate} = useContext(AppContext);
@@ -13,7 +13,7 @@ return (
             <div className="calendarContainer">
                     <CalendarData/>
                     <div className={ appoimentFile ? styles.appoiment_field : styles.appoiment_field_hide}>
-                        <Appointment eventDate={eventDate}/>
+                        <CreateAppointment eventDate={eventDate}/>
                     </div>
             </div>
             <aside>
