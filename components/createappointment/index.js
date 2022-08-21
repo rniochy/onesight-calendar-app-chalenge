@@ -3,22 +3,19 @@ import { AppContext } from '../../pages/_app';
 import styles from "../../styles/appointment.module.scss";
 import fetchData from '../../util/axios';
 
-const CreateAppointment = ({eventDate}) => {
+const CreateAppointment = ({eventDate_}) => {
     const {setAppoimentFile} = useContext(AppContext);
-    const {day, year, month} = eventDate;
+    const {day, year, month} = eventDate_;
     const [name, setName] = useState();
     const [note, setNote] = useState();
+    const eventDate =  year + "/"+ month +"/"+ day;
 
      async function saveEventHandler (e)  {
          e.preventDefault();
          setAppoimentFile(false); 
-        const res = await fetchData.put('/api/appointment/appointment',  {name, note});
-        alert(res.data.name)
+         await fetchData.post('/api/appointment/appointment',  {name, note, eventDate});
     }
-    const RemoveEventHandler = (e) => { 
-         e.preventDefault();
-         setAppoimentFile(false);    
-    }
+
     const noteChangeHandler =(e) =>{
         setNote(e.target.value);
     }
@@ -29,7 +26,7 @@ const CreateAppointment = ({eventDate}) => {
         <div className={styles.appointment_container}>
              <form>
                 <legend>Create new appointment</legend>
-                <h3>{month + "/"+ day +"/"+ year}</h3>
+                <h3>{eventDate}</h3>
                 <input onChange={nameChangeHandler} type="text" placeholder='Name'/>
                 <div className={styles.note_area}>
                     <label htmlFor="area" >Notes</label>
@@ -38,7 +35,6 @@ const CreateAppointment = ({eventDate}) => {
 
                 <div className={styles.buttons}>
                 <input onClick={saveEventHandler}   type="submit" value="Save"/>
-                <input onClick={RemoveEventHandler} type="submit" value="Remove"/>
                 </div>
              </form>
         </div>

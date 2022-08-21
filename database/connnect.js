@@ -12,4 +12,4 @@ export default function connect(){
     return connection.once('open',()=>{
          console.log("db is connected!")
     })
-}
+} 

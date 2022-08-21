@@ -5,12 +5,12 @@ connect();
 
 export default async (req, res)=>{
     const {method} = req;
-    const {name, note} = req.body;
+    const {name, note, eventDate} = req.body;
 
     switch(method){
         case 'POST':
             try {
-                const appointment = new Appointment({name, note});
+                const appointment = new Appointment({name, note, eventDate});
                 await appointment.save();
     
                 return res.send({name});

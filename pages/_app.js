@@ -1,11 +1,11 @@
-import HeadComponent from "../components/head";
+import HeadComponent from "../components/head/head";
 import "../styles/global.scss";
 import { createContext, useEffect, useState } from "react";
 export const AppContext = createContext(null)
 
 function MyApp({ Component, pageProps }) {
     const [appoimentFile, setAppoimentFile] = useState(false);
-    const [eventDate, setEventDate] = useState({day:"", month:"", year:""});
+    const [eventDate, setEventDate] = useState({year:"", month:"", day:""});
 
     return(
         <>

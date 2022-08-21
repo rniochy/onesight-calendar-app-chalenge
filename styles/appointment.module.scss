@@ -22,6 +22,7 @@ $flexDirection: column;
             }
             h3 {
                 color: rgb(00, 154, 154);
+                font-size: small;
 
             }
             input {
@@ -34,17 +35,18 @@ $flexDirection: column;
             input[type='submit'] {
                  margin-bottom: 0.5rem;
                  padding: 0.1rem;
-                 width: 49%;
+                 width: 97%;
+                 margin-left: 0.3rem;
             }
         }
     .note_area{
         display: $display;
         flex-direction: $flexDirection;
     }
-    .buttons {
-         display: flex;
-         margin-left: 0.4rem;
-         column-gap: 0.5%;
-    }
+    // .buttons {
+    //      display: flex;
+    //      margin-left: 0.4rem;
+    //      column-gap: 0.5%;
+    // }
 
 }

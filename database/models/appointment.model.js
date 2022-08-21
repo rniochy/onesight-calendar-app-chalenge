@@ -18,14 +18,15 @@ const AppointmentSchema = new Schema({
        type: Boolean,
        default: false  
      },
-     createdAt: {
-         type: Date,
-         default: Date.now
-     },
-},
-{
-    timestamps: true
-});
+     eventDate: {
+        type: String,
+        required: true,
+    },
+    },
+        {
+         timestamps: true
+        }
+);
 
- let Appointment = mongoose.models.AppointmentModel || mongoose.model('Appointment', AppointmentSchema);
+ let Appointment = mongoose.models.Appointment || mongoose.model('Appointment', AppointmentSchema);
  export default Appointment; 
