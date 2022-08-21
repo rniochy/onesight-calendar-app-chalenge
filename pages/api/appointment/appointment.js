@@ -10,10 +10,12 @@ export default async (req, res)=>{
     switch(method){
         case 'POST':
             try {
-                const appointment = new Appointment({name, note, eventDate});
-                await appointment.save();
-    
-                return res.send({name});
+                if(name && note){
+                    const appointment = new Appointment({name, note, eventDate});
+                    await appointment.save();
+                    return res.send({name});
+                }
+                return res.status(400).send({})
     
             }catch(err){
                 return res.status(400).send({msg: "Wasn't possivel cretae"})

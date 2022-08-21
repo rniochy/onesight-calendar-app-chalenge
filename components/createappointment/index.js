@@ -14,6 +14,7 @@ const CreateAppointment = ({eventDate_}) => {
          e.preventDefault();
          setAppoimentFile(false); 
          await fetchData.post('/api/appointment/appointment',  {name, note, eventDate});
+        
     }
 
     const noteChangeHandler =(e) =>{

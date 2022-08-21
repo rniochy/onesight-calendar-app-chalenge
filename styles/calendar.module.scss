@@ -4,10 +4,8 @@
      flex-direction: row;
      margin-top: 1rem;
 
-     aside {
-           display: grid;
-           grid-template-columns: 1fr 1fr 1fr;
-           border-left: 1px solid #ccc;;
+     aside {        
+           border-left: 1px solid #ccc;
            margin-left: .5rem;
      }
 }
