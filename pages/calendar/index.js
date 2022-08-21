@@ -18,7 +18,7 @@ export default function  Calendar() {
     
     async function getAppointment(){
         const res = await fetchData.get('/api/appointment/appointment');
-      setAppointment(res.data.appointments); 
+        setAppointment(res.data.appointments); 
     }
 
     return ( 

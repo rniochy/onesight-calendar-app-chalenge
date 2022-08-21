@@ -5,7 +5,7 @@ connect();
 
 export default async (req, res)=>{
     const {method} = req;
-    const {name, note, eventDate, id} = req.body;
+    const {name, note, eventDate, id, approve, cancel} = req.body;
 
     switch(method){
         case 'POST':
@@ -50,6 +50,9 @@ export default async (req, res)=>{
                     return res.send({});
                 } else if(name){
                     await Appointment.updateOne({_id: id}, {$set: {name}});
+                    return res.send({});
+                }else if(id){
+                    await Appointment.updateOne({_id: id}, {$set: {approve, cancel}});
                     return res.send({});
                 } else {
                     await Appointment.updateOne({_id: id}, {$set: {note}});

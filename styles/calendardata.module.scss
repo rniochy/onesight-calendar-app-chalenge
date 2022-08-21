@@ -3,12 +3,20 @@ $border-radius: 5px;
 $border-color: #9a9a9a;
 $color: rgb(00, 154, 154);
 
+.approve {
+     background-color: rgb(16, 255, 16);
+ }
+ .cancel {
+      background-color: rgb(255, 66, 66);
+ }
+
 .calendarData {
      border: 1px solid  $border-color;
      padding: 12px;
      border-radius: $border-radius;  
      grid-template-columns: 1fr 1fr
 }
+
 .weekdays {
      display: grid;
      grid-template-columns: $colun-of-calendar;
@@ -40,4 +48,8 @@ $color: rgb(00, 154, 154);
           background-color: $color;
           color: $border-color;
      }
+     .active{
+          background: $color ;
+          color: #fff;
+    }
  }

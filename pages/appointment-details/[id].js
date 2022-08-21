@@ -11,7 +11,6 @@ const Appointmentdetails = () => {
         (async()=>{
             const res = await fetchData.patch('/api/appointment/appointment', {id});
             setAppoiment(res.data.appointment);
-            console.log(appointment)
         })()   
     },[])
 

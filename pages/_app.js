@@ -7,9 +7,14 @@ function MyApp({ Component, pageProps }) {
     const [appoimentFile, setAppoimentFile] = useState(false);
     const [eventDate, setEventDate] = useState({year:"", month:"", day:""});
 
+
     return(
         <>
-            <AppContext.Provider value={{appoimentFile, setAppoimentFile, eventDate, setEventDate}}>
+            <AppContext.Provider value={
+                {
+                appoimentFile, setAppoimentFile,
+                eventDate, setEventDate,
+            }}>
                 <HeadComponent title="Onsight Calendar" />
                 <Component {...pageProps} />
             </AppContext.Provider>

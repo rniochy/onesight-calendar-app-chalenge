@@ -1,17 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useRouter } from 'next/router';
+import { AppContext } from '../../pages/_app';
 import styles from '../../styles/displayappointment.module.scss';
+import fetchData from '../../util/axios';
 
 const Displayappointment = ({dataAppointment}) => {
     const router = useRouter();
-    const {_id, name, eventDate}  = dataAppointment;
+    const {approve_, cancel_, setDate_} = useContext(AppContext);
+    const {_id:id, name, eventDate}  = dataAppointment;
     
     const displayDetailHandler = () =>{
-        router.push(`appointment-details/${_id}`);
+        router.push(`appointment-details/${id}`);
 
     }
-    const approveHandler = () => {
-         
+
+    const approveHandler = async () => {
+        await fetchData.put('/api/appointment/appointment', {id, cancel:false, approve: true});  
+    }
+    const cancelHandler = async () => {
+       await fetchData.put('/api/appointment/appointment', {id, cancel:true, approve: false});
     }
     return (
         <article className={styles.displayappointment_container}>
@@ -23,7 +30,7 @@ const Displayappointment = ({dataAppointment}) => {
                                 <p>{eventDate}</p>
                             </div>
                             <div className={styles.buttons}>
-                                <input type="button" value='cancel'/>
+                                <input type="button" onClick={cancelHandler}   value='cancel'/>
                                 <input type="button" onClick={approveHandler} value='approve'/>
                             </div>
                         </div>
