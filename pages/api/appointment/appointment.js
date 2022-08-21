@@ -5,7 +5,7 @@ connect();
 
 export default async (req, res)=>{
     const {method} = req;
-    const {name, note, eventDate} = req.body;
+    const {name, note, eventDate, id} = req.body;
 
     switch(method){
         case 'POST':
@@ -25,13 +25,19 @@ export default async (req, res)=>{
             try {
                 const appointments  = await Appointment.find({});
                 return res.send({appointments});
-
+            }catch(err){
+                return res.status(400).send({msg: "Wasn't possivel get appointments"})
+            }
+        case 'PATCH': 
+            try {
+                const appointment  = await Appointment.findOne({_id:id});
+                return res.send({appointment});
             }catch(err){
                 return res.status(400).send({msg: "Wasn't possivel get appointments"})
             }
         case 'DELETE': 
             try {
-                await Appointment.findByIdAndDelete({_id: "6300ce6a5721032766149493"});
+                await Appointment.findByIdAndDelete({_id: id});
                 return res.send({});
 
             }catch(err){
@@ -40,13 +46,13 @@ export default async (req, res)=>{
         case 'PUT': 
             try {
                 if(name && note){
-                    await Appointment.updateOne({_id: "6300ce7a5721032766149496"}, {$set: {name, note}});
+                    await Appointment.updateOne({_id: id}, {$set: {name, note}});
                     return res.send({});
                 } else if(name){
-                    await Appointment.updateOne({_id: "6300ce7a5721032766149496"}, {$set: {name}});
+                    await Appointment.updateOne({_id: id}, {$set: {name}});
                     return res.send({});
                 } else {
-                    await Appointment.updateOne({_id: "6300ce7a5721032766149496"}, {$set: {note}});
+                    await Appointment.updateOne({_id: id}, {$set: {note}});
                     return res.send({});
                 }
             }catch(err){

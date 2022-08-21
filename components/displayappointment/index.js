@@ -1,14 +1,17 @@
 import React from 'react';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 import styles from '../../styles/displayappointment.module.scss';
 
 const Displayappointment = ({dataAppointment}) => {
-    const router = useRouter()
+    const router = useRouter();
     const {_id, name, eventDate}  = dataAppointment;
     
     const displayDetailHandler = () =>{
         router.push(`appointment-details/${_id}`);
 
+    }
+    const approveHandler = () => {
+         
     }
     return (
         <article className={styles.displayappointment_container}>
@@ -21,7 +24,7 @@ const Displayappointment = ({dataAppointment}) => {
                             </div>
                             <div className={styles.buttons}>
                                 <input type="button" value='cancel'/>
-                                <input type="button" value='approve'/>
+                                <input type="button" onClick={approveHandler} value='approve'/>
                             </div>
                         </div>
                     </li>
