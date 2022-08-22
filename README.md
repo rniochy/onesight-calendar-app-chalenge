@@ -1,6 +1,6 @@
 # How to run 
 
-- To run this project first one you must run 'npm install' to get all packeges after download 
+- To run this project first one you must run 'npm install' to get all dependences packeges  after download 
 - Setting the environment variables like:
      
      env: {
@@ -14,6 +14,10 @@
 - MongoDB (Mongoose)
 - Axios
 - SASS
+
+-INSONIA
+- MongoCompass
+-VS CODE
 
 # The TEST
 
