@@ -1,3 +1,20 @@
+# How to run 
+
+- To run this project first one you must run 'npm install' to get all packeges after download 
+- Setting the environment variables like:
+     
+     env: {
+        URI: database
+        BASE_URL: localhost
+     }
+
+#  Techs that use to develop
+- React 
+- NextJs
+- MongoDB (Mongoose)
+- Axios
+- SASS
+
 # The TEST
 
 Now, the first phase, the Onesight technical test:
