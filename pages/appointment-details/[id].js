@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import fetchData from '../../util/axios';
-import {useRouter} from "next/router"
+import {useRouter} from "next/router";
+import styles from '../../styles/appointment-detail.module.scss';
 
 const Appointmentdetails = () => {
     const router = useRouter()
@@ -15,16 +16,18 @@ const Appointmentdetails = () => {
     },[])
 
     return (
-        <article>
-            <label>Name</label>
-            <h1>{appointment.name}</h1>
-            <label>Name</label>
-            <p>{appointment.note}</p>
-            <div>
-                <input type="button" value="editar"/>
-                <input type="button" value="remover"/>
-            </div>
-        </article>
+        <div className={styles.content}>
+            <article className={styles.appointment_detail}>
+                <label>Name</label>
+                <h3>{appointment.name}</h3>
+                <label>Note</label>
+                <p>{appointment.note}</p>
+                <div>
+                    <input type="button" value="editar"/>
+                    <input type="button" value="remover"/>
+                </div>
+            </article>
+        </div>
     );
 }
 

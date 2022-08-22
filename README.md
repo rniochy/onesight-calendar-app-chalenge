@@ -15,9 +15,12 @@
 - Axios
 - SASS
 
--INSONIA
+- INSONIA
 - MongoCompass
--VS CODE
+- VSCODE
+
+# Deploy 
+- https://onesight-calendar-app-chalenge.vercel.app/
 
 # The TEST
 
