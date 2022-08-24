@@ -8,6 +8,7 @@ function MyApp({ Component, pageProps }) {
     const [eventDate, setEventDate] = useState({year:"", month:"", day:""});
     const [approve, setApprove] = useState();
     const [cancel, setCancel] = useState();
+    const [appointment, setAppointment] = useState([]);
 
 
     return(
@@ -15,9 +16,10 @@ function MyApp({ Component, pageProps }) {
             <AppContext.Provider value={
                 {
                 appoimentFile, setAppoimentFile,
+                appointment, setAppointment,
                 eventDate, setEventDate,
                 approve, setApprove,
-                cancel, setCancel
+                cancel, setCancel,
             }}>
                 <HeadComponent title="Onsight Calendar" />
                 <Component {...pageProps} />

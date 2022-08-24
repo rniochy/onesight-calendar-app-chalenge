@@ -4,45 +4,38 @@ import { AppContext } from "../_app";
 import styles from '../../styles/calendardata.module.scss'; 
 import fetchData from '../../util/axios';
 
-const  CalendarData = ({data})=> {
-    const {setAppoimentFile, setEventDate, cancel, approve} = useContext(AppContext);
+const  CalendarData = ()=> {
+    const {setAppoimentFile, setEventDate, cancel, approve, appointment} = useContext(AppContext);
     const [dayList, setDayList] = useState();
     const [monthName, setmonthName] = useState();
     const [yearName, setYearName] = useState();
-    // const [datetDisplay, setDatetDisplay] = useState();
-    const [date, setDate] = useState(new Date());
-    const [month, setMonth] = useState(date.getMonth()+1);
-    // const [dataInPut, setDataInPut] = useState("");
-    const [year, setYear] = useState(date.getFullYear());
-    const [currentDay, setCurrentDay] = useState(date.getDate());
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = date.getMonth()+1;
+    const currentDay = date.getDate();
     const monthNames = ['January', 'February', 'March',  'April', 'May',
     'June', 'july', 'August',  'September', 'October', 'November', 'December'];
-    const [appointment, setAppointment] = useState([]);
-
+    
     useEffect(()=>{
         calendar();
-        getDetail();
     }, [cancel, approve])
     
 
-    const getDetail = async ()=>{
-        const res = await fetchData.get('/api/appointment/appointment');
-        setAppointment(res.data.appointment);
-    }
-    
     
     const handlerClickEvent = (e) =>{
         setEventDate({day:e.currentTarget.getAttribute('value'),month:month,year:year})
-        setAppoimentFile(true);
+        setAppoimentFile(true); 
     }
 
-    const calendar = () => {
+      async function calendar () {
+        const res = await fetchData.get('/api/appointment/appointment');
+        const  appointment = res.data.appointments;
         let amountDaysInMonth = new Date(year, month, 0).getDate()
         let amountDaysAtWeek = new Date(year, month-1, 1).getDay()
          
         setmonthName(monthNames[month-1])
         setYearName(year)
-        // setDatetDisplay(currentDay)
+        // setDatetDisplay(currentDay)   
 
         let gaps;
         if(amountDaysAtWeek === 0){
@@ -61,14 +54,21 @@ const  CalendarData = ({data})=> {
              } else if (day === currentDay && month === date.getMonth()+1 && year === date.getFullYear() ){
                 days = React.createElement('li', {value: day, key:day,  className: `${styles.active}`, onClick:handlerClickEvent}, day)
                 daysArr.push(days)        
-            //  } else if( day === 31 && month === 8 && year === 2022){
-            //     days = React.createElement('li', {value: day, key:day, className:`${styles.cancel}` ,  onClick:handlerClickEvent}, day)
-            //     daysArr.push(days)
              } else  {
-                 // if is aprrove && data matches 
-                 // if is cancel && data matches 
-                days = React.createElement('li', {value: day, key:day ,  onClick:handlerClickEvent}, day)
-                daysArr.push(days)      
+                    const elem = appointment.find((elem )=> elem.eventDate.day === day+"" && elem.eventDate.year === year+""  && elem.eventDate.month === month+"")
+                    if(elem){
+                        if(elem.approve){
+                            days = React.createElement('li', {value: day, key:day , className:`${styles.approve}`,  onClick:handlerClickEvent}, day)
+                            daysArr.push(days)      
+                        }
+                        if(elem.cancel){
+                            days = React.createElement('li', {value: day, key:day , className:`${styles.cancel}`,  onClick:handlerClickEvent}, day)
+                            daysArr.push(days)      
+                        }
+                    } else {
+                        days = React.createElement('li', {value: day, key:day ,  onClick:handlerClickEvent}, day)
+                        daysArr.push(days)      
+                    }
              }
 
         }

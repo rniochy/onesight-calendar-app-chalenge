@@ -9,22 +9,23 @@ import styles from '../styles/calendar.module.scss'
 
 
 export default function  Calendar({data}) {
-    const {appoimentFile} = useContext(AppContext);
-    const [appointment, setAppointment] = useState([]);
+    const {appoimentFile, appointment, setAppointment} = useContext(AppContext);
+   
 
     useEffect(()=>{
         setAppointment(JSON.parse(data))
-        console.log(JSON.parse(data))
     }, []); 
     
     return ( 
         <> 
             <div className={styles.container}>
                 <div className="calendarContainer">
-                    { <CalendarData/>}
-                    <div className={ appoimentFile ? 'appoiment_field' : 'appoiment_field_hide'}>
-                        { <CreateAppointment  edit={false}/> }
-                    </div>   
+                        {appointment ?  <CalendarData appointments={appointment}/> : ''}
+                        <div className={ appoimentFile ? 'appoiment_field' : 'appoiment_field_hide'}>
+                            { 
+                                <CreateAppointment  edit={false}/> 
+                            }
+                        </div>   
                 </div>
                 <aside>
                     {

@@ -8,7 +8,8 @@ const Displayappointment = ({dataAppointment}) => {
     const router = useRouter();
     const {setCancel, setApprove} = useContext(AppContext);
     const {_id:id, name, eventDate}  = dataAppointment;
-    const {day, year, month} = eventDate;   
+    const {day, year, month} = eventDate;  
+     
     const displayDetailHandler = () =>{
         setApprove(true);
         router.push(`appointment-details/${id}`);
