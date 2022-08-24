@@ -18,7 +18,7 @@ export default async (req, res)=>{
                 return res.status(400).send({})
     
             }catch(err){
-                return res.status(400).send({msg: "Wasn't possivel cretae"})
+                return res.status(500).send({msg: "Wasn't possivel cretae"})
              }
         
         case 'GET': 
@@ -30,16 +30,15 @@ export default async (req, res)=>{
             }
         case 'PATCH': 
             try {
-                const appointment  = await Appointment.findOne({_id:id});
+                const appointment  = await Appointment.findById({_id:id});
                 return res.send({appointment});
             }catch(err){
                 return res.status(400).send({msg: "Wasn't possivel get appointments"})
             }
         case 'DELETE': 
             try {
-                await Appointment.findByIdAndDelete({_id: id});
-                return res.send({});
-
+                await Appointment.deleteOne({_id: id});
+                return res.send({id});
             }catch(err){
                 return res.status(400).send({msg: "Wasn't possivel delete appointments"})
             }

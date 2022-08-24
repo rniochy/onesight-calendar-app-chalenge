@@ -6,18 +6,20 @@ import fetchData from '../../util/axios';
 
 const Displayappointment = ({dataAppointment}) => {
     const router = useRouter();
-    const {approve_, cancel_, setDate_} = useContext(AppContext);
+    const {setCancel, setApprove} = useContext(AppContext);
     const {_id:id, name, eventDate}  = dataAppointment;
-    
+    const {day, year, month} = eventDate;   
     const displayDetailHandler = () =>{
+        setApprove(true);
         router.push(`appointment-details/${id}`);
-
     }
 
     const approveHandler = async () => {
+        setApprove(true)
         await fetchData.put('/api/appointment/appointment', {id, cancel:false, approve: true});  
     }
     const cancelHandler = async () => {
+        setCancel(true);
        await fetchData.put('/api/appointment/appointment', {id, cancel:true, approve: false});
     }
     return (
@@ -27,7 +29,7 @@ const Displayappointment = ({dataAppointment}) => {
                         <div className={styles.content}>
                             <div onClick={displayDetailHandler} >
                                 <h2>{name.substring(0,15)}</h2>
-                                <p>{eventDate}</p>
+                                <p>{month+"/"+day+"/"+year}</p>
                             </div>
                             <div className={styles.buttons}>
                                 <input type="button" onClick={cancelHandler}   value='cancel'/>

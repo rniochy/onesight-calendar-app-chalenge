@@ -6,6 +6,8 @@ export const AppContext = createContext(null)
 function MyApp({ Component, pageProps }) {
     const [appoimentFile, setAppoimentFile] = useState(false);
     const [eventDate, setEventDate] = useState({year:"", month:"", day:""});
+    const [approve, setApprove] = useState();
+    const [cancel, setCancel] = useState();
 
 
     return(
@@ -14,6 +16,8 @@ function MyApp({ Component, pageProps }) {
                 {
                 appoimentFile, setAppoimentFile,
                 eventDate, setEventDate,
+                approve, setApprove,
+                cancel, setCancel
             }}>
                 <HeadComponent title="Onsight Calendar" />
                 <Component {...pageProps} />
