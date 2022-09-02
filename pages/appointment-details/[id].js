@@ -9,13 +9,18 @@ const Appointmentdetails = ({data}) => {
     const router = useRouter()
     const id = router.query.id
     const [appointment, setAppoiment] = useState([]);
-    const {appoimentFile, setAppoimentFile} = useContext(AppContext);
+    const {appoimentFile, setRefreshPage, setAppoimentFile, refreshPage} = useContext(AppContext);
 
     useEffect(()=>{
-         setAppoiment(JSON.parse(data))
+         setAppoiment(JSON.parse(data));
          setAppoimentFile(false);
-     
-    },[])
+         refreshPage ?update() : ''
+         setRefreshPage(false);
+    },[refreshPage])
+
+    const update = ()=>{
+        router.reload()
+    }
 
     const removeHandler = async () => {
         await fetchData.delete('/api/appointment/appointment', {data: {id}});
@@ -23,6 +28,7 @@ const Appointmentdetails = ({data}) => {
     }
     const editeHandler = async () =>{
         setAppoimentFile(true);
+     
     }
 
     return (

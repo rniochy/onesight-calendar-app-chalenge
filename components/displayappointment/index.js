@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { AppContext } from '../../pages/_app';
 import styles from '../../styles/displayappointment.module.scss';
@@ -6,18 +6,17 @@ import fetchData from '../../util/axios';
 
 const Displayappointment = ({dataAppointment}) => {
     const router = useRouter();
-    const {setCancel, setApprove} = useContext(AppContext);
+    const {setCancel,refreshPage, setApprove, setRefreshPage} = useContext(AppContext);
     const {_id:id, name, eventDate}  = dataAppointment;
-    const {day, year, month} = eventDate;  
-     
+    const {day, year, month} = eventDate; 
+
     const displayDetailHandler = () =>{
         setApprove(true);
         router.push(`appointment-details/${id}`);
     }
-
     const approveHandler = async () => {
-        setApprove(true)
-        await fetchData.put('/api/appointment/appointment', {id, cancel:false, approve: true});  
+        setApprove(true);
+        await fetchData.put('/api/appointment/appointment', {id, cancel:false, approve: true});    
     }
     const cancelHandler = async () => {
         setCancel(true);

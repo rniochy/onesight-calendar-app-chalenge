@@ -4,21 +4,25 @@ import styles from "../../styles/appointment.module.scss";
 import fetchData from '../../util/axios';
 
 const CreateAppointment = ({edit, id}) => {
-    const {setAppoimentFile, eventDate} = useContext(AppContext);
+    const {setAppoimentFile, eventDate, setRefreshPage} = useContext(AppContext);
     const [name, setName] = useState();
     const [note, setNote] = useState();
 
-
-    useEffect(()=>{
-        // setName(values.name);
-        // setNote(values.note)
-    })
-    async function saveEventHandler (e)  {
+    async function saveEventHandler (e)  { 
          e.preventDefault();
          setAppoimentFile(false); 
-        id  ? await fetchData.put('/api/appointment/appointment',  {name, note, eventDate, id})  : await fetchData.post('/api/appointment/appointment',  {name, note, eventDate}); 
+        if(id){
+        fetchData.put('/api/appointment/appointment',  {name, note, eventDate, id}).then(()=> {
+            setRefreshPage(true)
+
+        }) 
+        } else {
     
-        }
+          const res =  await fetchData.post('/api/appointment/appointment',  {name, note, eventDate}); 
+          setRefreshPage(true)
+
+        } 
+    }
     const noteChangeHandler =(e) =>{
         setNote(e.target.value);
     }

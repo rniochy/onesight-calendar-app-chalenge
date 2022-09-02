@@ -5,17 +5,22 @@ import fetchData from "../util/axios";
 import CalendarData from "./calendar"
 import CreateAppointment from "../components/createappointment";
 import Displayappointment from "../components/displayappointment";
-import styles from '../styles/calendar.module.scss'
-
+import styles from '../styles/index.module.scss'
+import { useRouter } from "next/router";
 
 export default function  Calendar({data}) {
-    const {appoimentFile, appointment, setAppointment} = useContext(AppContext);
-   
+    const router = useRouter()
+    const {appoimentFile, setRefreshPage, refreshPage, appointment, setAppointment} = useContext(AppContext);
 
     useEffect(()=>{
         setAppointment(JSON.parse(data))
-    }, []); 
-    
+        refreshPage ? update() : ''
+        setRefreshPage(false)
+    }, [refreshPage]); 
+
+    const update = ()=>{
+        router.reload()
+    }
     return ( 
         <> 
             <div className={styles.container}>
@@ -28,11 +33,11 @@ export default function  Calendar({data}) {
                         </div>   
                 </div>
                 <aside>
-                    {
+                {
                     appointment && appointment.length > 0 ? 
-                        appointment.map((elem, index)=> <Displayappointment dataAppointment={elem} key={index}/>)
+                    appointment.map((elem, index)=> <Displayappointment dataAppointment={elem} key={index}/>)
                     : ''
-                    }
+                 }
                 </aside>
             </div>
         </>

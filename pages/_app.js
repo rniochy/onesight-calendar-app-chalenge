@@ -1,6 +1,6 @@
 import HeadComponent from "../components/head/head";
 import "../styles/global.scss";
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 export const AppContext = createContext(null)
 
 function MyApp({ Component, pageProps }) {
@@ -9,12 +9,13 @@ function MyApp({ Component, pageProps }) {
     const [approve, setApprove] = useState();
     const [cancel, setCancel] = useState();
     const [appointment, setAppointment] = useState([]);
-
+    const [refreshPage, setRefreshPage] = useState(false);
 
     return(
         <>
             <AppContext.Provider value={
                 {
+                refreshPage, setRefreshPage,
                 appoimentFile, setAppoimentFile,
                 appointment, setAppointment,
                 eventDate, setEventDate,
