@@ -1,9 +1,3 @@
- .appoiment_field_hide {
-    display: none;
-    transition: all 500ms ease-in-out;
-}
-
-
 html,
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
@@ -23,9 +17,18 @@ a {
   margin: 0;
   font-size: large;
 }
-@media screen and (min-width: 998px) {
+@media screen and (min-width: 659px) {
   .appoiment_field_hide {
     visibility: hidden;
     transition: all 500ms ease-in-out;
 }
 }
+@media screen and (max-width: 997px) {
+  .appoiment_field_hide {
+    display: none;
+    transition: all 500ms ease-in-out;
+}
+}
+
+
+// appoiment_field
