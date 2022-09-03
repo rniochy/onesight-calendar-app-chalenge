@@ -15,26 +15,27 @@ $color: rgb(00, 154, 154);
      padding: 12px;
      border-radius: $border-radius;  
      grid-template-columns: 1fr 1fr;
+     
 }
 
 .weekdays {
      display: grid;
      grid-template-columns: $colun-of-calendar;
-     column-gap: 2rem;
+     column-gap: 0rem;
      user-select: none;
+     margin-left: 0.2rem;
 }
 .days_of_week {
-     margin-top: 0.5rem;
+     // margin-top: 0.5rem;
      display: grid;
      grid-template-columns: $colun-of-calendar;
-     column-gap: 2rem;
+     column-gap: 0rem;
      user-select: none;   
-     margin-right: 0.5rem;
 
      li {
           border: 1px solid rgba($border-color, 0.724);
           margin: 0.1rem;
-          padding: 3px;
+          padding: 2px;
           border-radius: $border-radius;
           text-align: center;
           color: rgba(00, 154, 154); ;
@@ -53,3 +54,15 @@ $color: rgb(00, 154, 154);
           color: #fff;
     }
  }
+ @media screen and (min-width: 481px) {
+     .days_of_week {
+          column-gap: 0.5rem;
+     }
+     
+}
+ @media screen and (min-width: 769px) {
+     .days_of_week {
+          column-gap: 0.5rem;
+     }
+     
+}

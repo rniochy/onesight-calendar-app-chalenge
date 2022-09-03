@@ -24,7 +24,7 @@ export default function  Calendar({data}) {
     return ( 
         <> 
             <div className={styles.container}>
-                <div className="calendarContainer">
+                <div className={styles.calendarContainer}>
                         {appointment ?  <CalendarData appointments={appointment}/> : ''}
                         <div className={ appoimentFile ? 'appoiment_field' : 'appoiment_field_hide'}>
                             { 

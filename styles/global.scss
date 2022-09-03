@@ -1,7 +1,6 @@
-
-  .appoiment_field_hide {
-    visibility: hidden;
-    transition: 300ms ease-in-out;
+ .appoiment_field_hide {
+    display: none;
+    transition: all 500ms ease-in-out;
 }
 
 
@@ -23,4 +22,10 @@ a {
   padding: 0;
   margin: 0;
   font-size: large;
+}
+@media screen and (min-width: 998px) {
+  .appoiment_field_hide {
+    visibility: hidden;
+    transition: all 500ms ease-in-out;
+}
 }

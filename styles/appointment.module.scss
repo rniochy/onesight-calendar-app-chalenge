@@ -2,7 +2,6 @@ $display: flex;
 $flexDirection: column;
 
 .appointment_container {
-    margin-top: 1rem;
     display: $display;
     flex-direction: $flexDirection;
         form {
