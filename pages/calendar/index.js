@@ -87,7 +87,9 @@ const  CalendarData = ()=> {
                 <li>Su</li>
             </ul> 
             <div className={styles.days_of_week_conatiner}>
-                {dayList}
+               <ul>
+               {dayList}
+                </ul> 
             </div>  
         </section>
     )
